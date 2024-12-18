@@ -141,11 +141,10 @@ app.post('/fetch-placement-details', async (req, res) => {
 
         res.json({
             // id: details.id,
-            // // headline: fields['ℹ️ Headline'] != null? fields['ℹ️ Headline']:"N/A",
-            // contactName: fields["⚙️Contact Name"]?.[0] || "N/A",
-            // contactEmail: fields["⚙️Contact Email"]?.[0] || "N/A",
-            jobDescription: "HELLO"
-            // fields["ℹ️ Job Description (For Softr)"] || "No description available",
+            headline: fields['ℹ️ Headline'] != null? fields['ℹ️ Headline']:"N/A",
+            contactName: fields["⚙️Contact Name"]?.[0] || "N/A",
+            contactEmail: fields["⚙️Contact Email"]?.[0] || "N/A",
+            jobDescription: fields["ℹ️ Job Description (For Softr)"] || "No description available",
         });
         
 

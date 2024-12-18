@@ -31,44 +31,6 @@ const SearchBoxWithResponse = () => {
         }
     };
 
-    // const PlacementDetails = async (query) => {
-        
-    //         alert(query);
-
-    //     try {
-    //         const response = await fetch('http://localhost:5000/fetch-placement-details', {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify({ query }),
-    //         });
-
-
-    //     //     if (!response.ok) {
-    //     //         throw new Error('Failed to fetch placement details');
-    //     //     }
-
-    //     //     const data = await response.json();
-    //     //     setSelectedResponse(data.id); // Set the detailed response for the modal
-            
-    //     // } catch (error) {
-    //     //     console.error('Error fetching placement details:', error);
-    //     // }
-    //             const data = await response.json();
-
-    //             if (response.ok) {
-    //                 setDetails(data);
-    //             } else {
-    //                 setError(data.error || "Failed to fetch details.");
-    //             }
-    //         } catch (err) {
-    //             setError("An error occurred while fetching details.");
-    //         } finally {
-    //             setLoading(false);
-    //         }
-    // };
-
     const PlacementDetails = async (query) => {
         setDetails(null);
         setLoading(true);
@@ -132,7 +94,15 @@ const SearchBoxWithResponse = () => {
                                         <div className="modal-content">
                                             <div className="modal-header">
                                                 <h5 className="modal-title" id={`${modalId}Label`}>
-                                                    Placement Details
+                                                    <b>{loading ? (
+                                                        <p>Loading details</p>
+                                                    ) : error ? (
+                                                        <p style={{ color: 'red' }}>{error}</p>
+                                                    ) : details?.headline ? (
+                                                        <pre>{details.headline}</pre>
+                                                    ) : (
+                                                        <p>No job description available.</p>
+                                                    )}</b>
                                                 </h5>
                                                 <button
                                                     type="button"
@@ -142,24 +112,40 @@ const SearchBoxWithResponse = () => {
                                                 ></button>
                                             </div>
                                             <div className="modal-body">
-                                                
-                                                {/* <h2>{details.headline}</h2>
-                                                <p><strong>Contact Name:</strong> {details.contactName}</p>
-                                                // <p><strong>Contact Email:</strong> {details.contactEmail}</p> */}
+                                                <p><strong>Contact Name:</strong></p>
+                                                {loading ? (
+                                                    <p>...</p>
+                                                ) : error ? (
+                                                    <p style={{ color: 'red' }}>{error}</p>
+                                                ) : details?.contactName ? (
+                                                    <pre>{details.contactName}</pre>
+                                                ) : (
+                                                    <p></p>
+                                                )}
+                                                <p><strong>Contact Email:</strong></p>
+                                                {loading ? (
+                                                    <p>...</p>
+                                                ) : error ? (
+                                                    <p style={{ color: 'red' }}>{error}</p>
+                                                ) : details?.contactEmail ? (
+                                                    <pre>{details.contactEmail}</pre>
+                                                ) : (
+                                                    <p></p>
+                                                )}
                                                 <p><strong>Job Description:</strong></p>
-                                                <pre>{details.jobDescription}</pre>
+                                                {loading ? (
+                                                    <p>...</p>
+                                                ) : error ? (
+                                                    <p style={{ color: 'red' }}>{error}</p>
+                                                ) : details?.jobDescription ? (
+                                                    <pre>{details.jobDescription}</pre>
+                                                ) : (
+                                                    <p>No job description available.</p>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* Button to Trigger Modal 
-                                {selectedResponse ? (
-                                                    <pre>{selectedResponse}</pre>
-                                                ) : (
-                                                    <p>Loading...</p>
-                                                )}
-                                */}
                                 <button
                                     type="button"
                                     className="btn btn-primary"
@@ -179,7 +165,7 @@ const SearchBoxWithResponse = () => {
                         );
                     })
                 ) : (
-                    <p>No responses yet. Try searching for something! trayan@thrivelia.com</p>
+                    <p>No responses yet. Try trayan@thrivelia.com!</p>
                 )}
             </div>
         </div>
