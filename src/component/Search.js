@@ -120,7 +120,7 @@ const SearchBoxWithResponse = () => {
                                                 ) : details?.contactName ? (
                                                     <pre>{details.contactName}</pre>
                                                 ) : (
-                                                    <p></p>
+                                                    <p>No Contact Name available.</p>
                                                 )}
                                                 <p><strong>Contact Email:</strong></p>
                                                 {loading ? (
@@ -130,7 +130,7 @@ const SearchBoxWithResponse = () => {
                                                 ) : details?.contactEmail ? (
                                                     <pre>{details.contactEmail}</pre>
                                                 ) : (
-                                                    <p></p>
+                                                    <p>No Contact Email available.</p>
                                                 )}
                                                 <p><strong>Job Description:</strong></p>
                                                 {loading ? (
