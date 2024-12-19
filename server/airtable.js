@@ -4,20 +4,18 @@ const cors = require('cors');
 const Airtable = require('airtable');
 
 const app = express();
-const PORT = 5000;
 
 app.use(bodyParser.json());
 app.use(cors());
 
 const corsOptions = {
-    origin: 'http://localhost:3000', 
+    origin: 'https://airtable-task-frontend-eta.vercel.app/', 
     methods: ['GET', 'POST'],       
     allowedHeaders: ['Content-Type'],
     credential: true
 };
 
 app.use(cors(corsOptions));
-
 
 const Base_id = "app755IAlA5by0SIb";
 const Api_key = "patcxIhodwFPaz8kB.ebb62ecc8edabb1276185f24c7d6f8170730119b45c6bec6ca4e66a1a7705fbc";
@@ -83,7 +81,10 @@ async function getPlacementDetails(placementId) {
 // API endpoint to fetch user and placement details
 app.post('/fetch-details', async (req, res) => {
 
+    console.log(email);
     const email = req.body.query;
+    
+    console.log(email);
     
     if (!email) {
         return res.status(400).json({ error: "Email is required" });
@@ -155,7 +156,15 @@ app.post('/fetch-placement-details', async (req, res) => {
     }
 });
 
-// Start the server
-app.listen(PORT, () => {
-    console.log("HELLO");
+app.get('/', (req, res) => {
+  res.status(200).send('Airtable API is running'); // Or a JSON response
 });
+
+module.exports = async (req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'https://airtable-task-frontend-eta.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+};
+
+module.exports = app;
