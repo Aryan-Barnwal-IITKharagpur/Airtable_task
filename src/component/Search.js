@@ -11,6 +11,8 @@ const SearchBoxWithResponse = () => {
     const handleSearch = async () => {
         if (!searchText) return;
 
+        alert(searchText);
+        
         try {
             const response = await fetch('https://airtable-assignment-backend-final.vercel.app/fetch-details', {
                 method: 'POST',
