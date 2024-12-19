@@ -16,7 +16,7 @@ const SearchBoxWithResponse = () => {
         try {
             const response = await fetch('https://airtable-assignment-backend-final.vercel.app/fetch-details', {
                 method: 'POST',
-                mode: 'no-cors',
+                mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -42,7 +42,7 @@ const SearchBoxWithResponse = () => {
         try {
             const response = await fetch('https://airtable-assignment-backend-final.vercel.app/fetch-placement-details', {
                 method: 'POST',
-                mode: 'no-cors',
+                mode: 'cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
