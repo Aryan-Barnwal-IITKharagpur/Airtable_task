@@ -8,11 +8,5 @@
   ],
   "routes": [
     { "src": "/(.*)", "dest": "airtable.js" }
-  ],
-  "middleware": [
-    {
-      "source": "/(.*)",
-      "destination": "/api/middleware",
-    }
   ]
 }
