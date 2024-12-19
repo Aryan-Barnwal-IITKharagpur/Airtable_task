@@ -12,7 +12,7 @@ const SearchBoxWithResponse = () => {
         if (!searchText) return;
 
         try {
-            const response = await fetch('https://airtable-task-ten.vercel.app/fetch-details', {
+            const response = await fetch('https://airtable-assignment.vercel.app/fetch-details', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ const SearchBoxWithResponse = () => {
         setError(null);
 
         try {
-            const response = await fetch('https://airtable-task-ten.vercel.app/fetch-placement-details', {
+            const response = await fetch('https://airtable-assignment.vercel.app/fetch-placement-details', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
